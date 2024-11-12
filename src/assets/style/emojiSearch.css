@@ -54,6 +54,7 @@ input {
     top: -3.5rem;
     right: -18px;
     padding: 0 20px;
+    text-wrap: nowrap;
     border-radius: 1rem;
     opacity: 0;
     visibility: hidden;

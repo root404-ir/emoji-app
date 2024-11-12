@@ -6,6 +6,7 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 const Emoji = () => {
     const [searchItem, setSearchItem] = useState('')
+    const [copySatus,setCopyStatus] = useState('کپی')
 
     const handleSearch = (e) => {
         setSearchItem(e.target.value)
@@ -15,7 +16,10 @@ const Emoji = () => {
     ))
     const Copy = (emojiSymbol) => {
         navigator.clipboard.writeText(emojiSymbol).then(() => {
-            alert('ایموجی مورد نظر با موفقیت کپی شد')
+            setCopyStatus('کپی شد')
+            setTimeout(()=>{
+                setCopyStatus('کپی')
+            },2000)
         }).catch(err => {
             console.error("خطا در کپی کردن ایموجی:", err)
         })
@@ -35,7 +39,7 @@ const Emoji = () => {
                             <div className="icon">
                                 <FontAwesomeIcon icon={faCopy} onClick={() => Copy(e.symbol)} />
                                 <div className="copy">
-                                    <span>کپی</span>
+                                    <span>{copySatus}</span>
                                 </div>
                             </div>
                         </li>
