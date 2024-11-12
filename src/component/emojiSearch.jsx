@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import EmojiList from '../EMOJI-ITEM.json'
 import '../assets/style/emojiSearch.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,8 +6,8 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 const Emoji = () => {
     const [searchItem, setSearchItem] = useState('')
-    const [copySatus,setCopyStatus] = useState('کپی')
-
+    const [copySatus, setCopyStatus] = useState('کپی')
+    let copyTimeOut
     const handleSearch = (e) => {
         setSearchItem(e.target.value)
     }
@@ -17,13 +17,13 @@ const Emoji = () => {
     const Copy = (emojiSymbol) => {
         navigator.clipboard.writeText(emojiSymbol).then(() => {
             setCopyStatus('کپی شد')
-            setTimeout(()=>{
+            clearTimeout(copyTimeOut)
+            copyTimeOut = setTimeout(() => {
                 setCopyStatus('کپی')
-            },2000)
+            }, 2000)
         }).catch(err => {
             console.error("خطا در کپی کردن ایموجی:", err)
         })
-
     }
     return (
         <div>
@@ -33,18 +33,17 @@ const Emoji = () => {
             </div>
             <ul>
                 {filterEmoji.map(e => (
-                    <div >
-                        <li className="emoji-container">
+                    <div>
+                        <li className="emojies">
                             {e.symbol} {e.title}
                             <div className="icon">
                                 <FontAwesomeIcon icon={faCopy} onClick={() => Copy(e.symbol)} />
                                 <div className="copy">
-                                    <span>{copySatus}</span>
+                                    <span>{copySatus +" " +  e.symbol}</span>
                                 </div>
                             </div>
                         </li>
                     </div>
-
                 ))}
             </ul>
         </div>
