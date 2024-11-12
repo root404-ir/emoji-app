@@ -1,0 +1,25 @@
+ul
+{
+    list-style: none;
+    line-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+li
+{
+    border: 2px solid blueviolet;
+    padding: 5px 9px;
+    border-radius: 10px;
+}
+::placeholder
+{
+    text-align: right;
+}
+input{
+    padding: 5px 9px;
+    border-radius: 10px;
+    border: none;
+    border: 2px solid blueviolet;
+}
