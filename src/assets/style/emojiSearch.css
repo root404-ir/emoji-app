@@ -1,5 +1,4 @@
-ul
-{
+ul {
     list-style: none;
     line-height: 40px;
     display: flex;
@@ -7,19 +6,61 @@ ul
     gap: 30px;
     margin-top: 30px;
 }
-li
-{
+
+li {
     border: 2px solid blueviolet;
     padding: 5px 9px;
     border-radius: 10px;
+    margin-top: 3rem;
 }
-::placeholder
-{
+
+::placeholder {
     text-align: right;
 }
-input{
-    padding: 5px 9px;
+
+input {
+    padding: 10px 20px !important;
     border-radius: 10px;
     border: none;
     border: 2px solid blueviolet;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emoji-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.icon i {
+    color: black;
+}
+.copy
+{
+    background-color: #fff;
+    border: 1px solid blueviolet;
+    position: absolute; 
+    top: -3.5rem;
+    right: -18px;
+    padding: 0 20px;
+    border-radius: 1rem;
+    opacity: 0;
+    visibility: hidden;
+}
+.icon:hover .copy
+{
+    opacity: 1;
+    visibility: visible;
+    transition: all 400ms ease;
 }
